@@ -6,27 +6,21 @@ with open("README.md", "r") as fh:
 with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
-with open('standards-requirements.txt') as f:
-    standards_requirements = f.read().splitlines()
-
 setuptools.setup(
-    name="honeybee-doe2",
+    name="fairyfly-therm",
     use_scm_version=True,
     setup_requires=['setuptools_scm'],
     author="Ladybug Tools",
     author_email="info@ladybug.tools",
-    description="Honeybee extension for translating HBJSON files to INP files for eQuest",
+    description="Fairyfly extension for translating HBJSON files to INP files for eQuest",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ladybug-tools/honeybee-doe2",
+    url="https://github.com/ladybug-tools/fairyfly-therm",
     packages=setuptools.find_packages(exclude=["tests*", "equest_docs*"]),
     install_requires=requirements,
-    extras_require={
-        'standards': standards_requirements
-    },
     include_package_data=True,
     entry_points={
-        "console_scripts": ["honeybee-doe2 = honeybee_doe2.cli:doe2"]
+        "console_scripts": ["fairyfly-therm = fairyfly_therm.cli:therm"]
     },
     classifiers=[
         "Programming Language :: Python :: 2.7",
