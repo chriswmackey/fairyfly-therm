@@ -1,5 +1,5 @@
 # coding=utf-8
-"""Solid THERM material."""
+"""Cavity THERM material."""
 from __future__ import division
 import xml.etree.ElementTree as ET
 
@@ -7,26 +7,28 @@ from fairyfly._lockable import lockable
 from fairyfly.typing import float_in_range, float_positive
 
 from ._base import _ThermMaterialBase
+from ..lib.gases import air
 
 
 @lockable
-class SolidMaterial(_ThermMaterialBase):
-    """Typical conductive material.
+class CavityMaterial(_ThermMaterialBase):
+    """Typical cavity material.
 
     Args:
-        conductivity: Number for the thermal conductivity of the material [W/m-K].
+        gas: A Gas material for the gas that fills the cavity. (Default: air).
+        cavity_model: Text for the type of cavity model to be used to determine
+            the thermal resistance of the material. Choose from the following:
+
+            * CEN
+            * NFRC
+            * ISO15099
+            * ISO15099Ventilated
+
         emissivity: Number between 0 and 1 for the infrared hemispherical
             emissivity of the front side of the glass. (Default: 0.9).
         emissivity_back: Number between 0 and 1 for the infrared hemispherical
             emissivity of the back side of the glass. If None, this will
             default to the same value specified for emissivity. (Default: None)
-        density: Optional number for the density of the material [kg/m3]. (Default: None).
-        porosity: Optional number between zero and one for the porosity of
-            the material. (Default: None).
-        specific_heat: Optional number for the specific heat of the material [J/kg-K].
-            If None, it is not included in the export. (Default: None).
-        vapor_diffusion_resistance: Optional number for the water vapor diffusion
-            resistance factor [Dimensionless]. (Default: None).
         identifier: Text string for a unique object ID. Must be a UUID in the
             format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx. If None, a UUID will
             automatically be generated. (Default: None).

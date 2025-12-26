@@ -1,3 +1,3 @@
-from tests.condition_comprehensive_test import test_condition_lockability
+from fairyfly_therm.lib.gases import GASES
 
-test_condition_lockability()
+print(GASES)
