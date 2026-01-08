@@ -1,1 +1,1 @@
-fairyfly-core==0.2.3
+fairyfly-core==0.2.4
